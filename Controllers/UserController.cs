@@ -19,7 +19,7 @@ namespace authenticationandauthorization.Controllers
             _applicationDbContext = dbContext;
             _configuration = configuration;
         }
-    [Authorize]
+    [Authorize(Roles = "User")]
     [HttpGet]
     public IActionResult GetAllUsers()
     {
@@ -41,7 +41,7 @@ namespace authenticationandauthorization.Controllers
 
             if (password == user.Password) // You should hash & verify passwords in production
             {
-                var token = GenerateJwtToken(user.Name);
+                var token = GenerateJwtToken(user.Name,user.CustomRoless);
                 return Ok(new { message = "User Login Successfully", token });
             }
             else
@@ -50,15 +50,16 @@ namespace authenticationandauthorization.Controllers
             }
         }
 
-        private string GenerateJwtToken(string name)
+        private string GenerateJwtToken(string name, CustomRoless roless)
         {
             var secretKey = _configuration["JwtSettings:Secret"] ?? "thisismycustomsecretekeywhichiamusing";
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha384);
 
-            var claims = new[]
+            var claims = new List<Claim>
             {
                 new Claim(JwtRegisteredClaimNames.Sub, name),
+                new Claim(ClaimTypes.Role, roless.ToString()), // Add role claim
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
