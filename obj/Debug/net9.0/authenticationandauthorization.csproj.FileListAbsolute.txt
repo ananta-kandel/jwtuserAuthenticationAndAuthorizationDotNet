@@ -167,3 +167,5 @@
 /Users/anantakandel/Desktop/NotThisTimeThenNot/dotnet/authenticationandauthorization/obj/Debug/net9.0/authenticationandauthorization.pdb
 /Users/anantakandel/Desktop/NotThisTimeThenNot/dotnet/authenticationandauthorization/obj/Debug/net9.0/authenticationandauthorization.genruntimeconfig.cache
 /Users/anantakandel/Desktop/NotThisTimeThenNot/dotnet/authenticationandauthorization/obj/Debug/net9.0/ref/authenticationandauthorization.dll
+/Users/anantakandel/Desktop/NotThisTimeThenNot/dotnet/authenticationandauthorization/bin/Debug/net9.0/Task_Manangement/package-lock.json
+/Users/anantakandel/Desktop/NotThisTimeThenNot/dotnet/authenticationandauthorization/bin/Debug/net9.0/Task_Manangement/package.json
